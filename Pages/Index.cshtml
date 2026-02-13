@@ -1,0 +1,43 @@
+﻿@page
+@model IndexModel
+@{
+        ViewData["Title"] = "Validador de Bandeiras";
+}
+
+<section class="validator-wrapper">
+    <div class="validator-card">
+        <h1 class="validator-title">Validador de Bandeiras de Cartão</h1>
+        <p class="validator-sub">Insira o número do cartão (com ou sem espaços) e clique em verificar.</p>
+
+        <form method="post" class="validator-form">
+            <div class="mb-3">
+                <label for="cardNumber" class="form-label">Número do cartão</label>
+                <input asp-for="CardNumber" id="cardNumber" name="CardNumber" class="form-control form-control-lg" placeholder="1234 5678 9012 3456" autocomplete="cc-number" />
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary btn-lg">Verificar</button>
+                <button type="button" class="btn btn-outline-secondary btn-lg" onclick="document.getElementById('cardNumber').value=''; document.getElementById('result').innerText='';">Limpar</button>
+            </div>
+        </form>
+
+        <div id="result" class="validator-result" role="status" aria-live="polite">
+            @if (Model.ShowResult)
+            {
+                    if (Model.IsValid)
+                    {
+                            <div class="alert alert-success mt-3">
+                                <strong>VÁLIDO</strong> - Bandeira detectada: @Model.Brand
+                            </div>
+                    }
+                    else
+                    {
+                            <div class="alert alert-danger mt-3">
+                                <strong>INVÁLIDO</strong> - O número não corresponde às bandeiras conhecidas.
+                            </div>
+                    }
+            }
+        </div>
+    </div>
+</section>
+

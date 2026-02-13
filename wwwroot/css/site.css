@@ -1,0 +1,70 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/* Validator specific styles */
+.validator-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+}
+.validator-card {
+  width: 100%;
+  max-width: 760px;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfbff 100%);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.08);
+  padding: 28px;
+  border: 1px solid rgba(37,140,251,0.06);
+}
+.validator-title {
+  margin: 0 0 6px 0;
+  font-size: 1.5rem;
+  color: #111827;
+}
+.validator-sub {
+  margin: 0 0 18px 0;
+  color: #6b7280;
+}
+.validator-form .form-control {
+  font-size: 1rem;
+  padding: 14px 12px;
+}
+.validator-result .alert {
+  margin-bottom: 0;
+  font-size: 0.98rem;
+}
+
+@media (max-width: 576px) {
+  .validator-card { padding: 18px; }
+  .validator-title { font-size: 1.25rem; }
+}
