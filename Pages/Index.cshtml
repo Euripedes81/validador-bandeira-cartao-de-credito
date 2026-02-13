@@ -1,43 +1,85 @@
 ﻿@page
 @model IndexModel
 @{
-        ViewData["Title"] = "Validador de Bandeiras";
+    ViewData["Title"] = "Validador de Cartão de Crédito";
 }
 
-<section class="validator-wrapper">
+<div class="validator-wrapper">
     <div class="validator-card">
-        <h1 class="validator-title">Validador de Bandeiras de Cartão</h1>
-        <p class="validator-sub">Insira o número do cartão (com ou sem espaços) e clique em verificar.</p>
+        <div class="card-header-custom">
+            <h1 class="validator-title">🔍 Validador de Cartão de Crédito</h1>
+            <p class="validator-sub">Digite o número do seu cartão para identificar a bandeira instantaneamente</p>
+        </div>
 
         <form method="post" class="validator-form">
-            <div class="mb-3">
-                <label for="cardNumber" class="form-label">Número do cartão</label>
-                <input asp-for="CardNumber" id="cardNumber" name="CardNumber" class="form-control form-control-lg" placeholder="1234 5678 9012 3456" autocomplete="cc-number" />
+            <div class="form-group-custom">
+                <label for="cardNumber" class="form-label-custom">Número do Cartão</label>
+                <div class="input-wrapper">
+                    <input asp-for="CardNumber" id="cardNumber" name="CardNumber" class="form-control-custom" placeholder="1234 5678 9012 3456" autocomplete="cc-number" />
+                    <span class="input-icon">💳</span>
+                </div>
+                <small class="form-text-hint">Aceita números com ou sem espaços</small>
             </div>
 
-            <div class="d-flex gap-2">
-                <button type="submit" class="btn btn-primary btn-lg">Verificar</button>
-                <button type="button" class="btn btn-outline-secondary btn-lg" onclick="document.getElementById('cardNumber').value=''; document.getElementById('result').innerText='';">Limpar</button>
+            <div class="buttons-wrapper">
+                <button type="submit" class="btn-custom btn-custom-primary">
+                    <span>✓ Verificar</span>
+                </button>
+                <button type="button" class="btn-custom btn-custom-secondary" onclick="clearForm()">
+                    <span>🔄 Limpar</span>
+                </button>
             </div>
         </form>
 
         <div id="result" class="validator-result" role="status" aria-live="polite">
             @if (Model.ShowResult)
             {
-                    if (Model.IsValid)
-                    {
-                            <div class="alert alert-success mt-3">
-                                <strong>VÁLIDO</strong> - Bandeira detectada: @Model.Brand
-                            </div>
-                    }
-                    else
-                    {
-                            <div class="alert alert-danger mt-3">
-                                <strong>INVÁLIDO</strong> - O número não corresponde às bandeiras conhecidas.
-                            </div>
-                    }
+                if (Model.IsValid)
+                {
+                    <div class="result-card result-success">
+                        <div class="result-icon">✓</div>
+                        <div class="result-content">
+                            <h2 class="result-title">Cartão Válido!</h2>
+                            <p class="result-brand">Bandeira: <strong>@Model.Brand</strong></p>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="result-card result-error">
+                        <div class="result-icon">✗</div>
+                        <div class="result-content">
+                            <h2 class="result-title">Cartão Inválido</h2>
+                            <p class="result-brand">O número não corresponde às bandeiras conhecidas</p>
+                        </div>
+                    </div>
+                }
             }
         </div>
+
+        <div class="brands-info">
+            <h3 class="brands-title">Bandeiras Suportadas</h3>
+            <div class="brands-grid">
+                <span class="brand-badge">💳 Visa</span>
+                <span class="brand-badge">💳 MasterCard</span>
+                <span class="brand-badge">💳 American Express</span>
+                <span class="brand-badge">💳 Discover</span>
+                <span class="brand-badge">💳 Diners Club</span>
+                <span class="brand-badge">💳 JCB</span>
+                <span class="brand-badge">💳 Voyager</span>
+                <span class="brand-badge">💳 Aura</span>
+                <span class="brand-badge">💳 HiperCard</span>
+                <span class="brand-badge">💳 EnRoute</span>
+            </div>
+        </div>
     </div>
-</section>
+</div>
+
+<script>
+function clearForm() {
+    document.getElementById('cardNumber').value = '';
+    document.getElementById('result').innerHTML = '';
+    document.getElementById('cardNumber').focus();
+}
+</script>
 

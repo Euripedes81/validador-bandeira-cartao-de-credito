@@ -1,24 +1,41 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ValidadorBandeirasCartaoDeCredito</title>
+    <title>@ViewData["Title"] - Validador de Cartão de Crédito</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ValidadorBandeirasCartaoDeCredito.styles.css" asp-append-version="true" />
 </head>
-<body>    
-    <div class="container">
-        <main role="main" class="pb-3">
+<body>
+    <header class="navbar-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">💳 Validador de Cartão</a>
+                <span class="navbar-text text-muted">Identifique sua bandeira em segundos</span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container main-container">
+        <main role="main" class="pb-5">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted text-center">
-        <div class="container">
-            &copy; 2026 - Validador de Cartão de Crédito </div>
+    <footer class="footer-modern">
+        <div class="container-fluid">
+            <div class="row align-items-center py-4">
+                <div class="col-md-6">
+                    <p class="mb-0">Validador de Cartão de Crédito © 2026</p>
+                </div>
+                <div class="col-md-6 text-end">
+                    <small>Validação segura e rápida</small>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
