@@ -13,7 +13,7 @@ public static class CardBrandValidator
         ("Discover", new Regex(@"^(?:6011|65|64[4-9]|622)\d{12}$", RegexOptions.Compiled)),
         ("EnRoute", new Regex(@"^(?:2014|2149)\d{11}$", RegexOptions.Compiled)),
         ("JCB", new Regex(@"^35(?:2[89]|[3-8][0-9])\d{12}$", RegexOptions.Compiled)),
-        ("Voyager", new Regex(@"^86992\d{10}$", RegexOptions.Compiled)),
+        ("Voyager", new Regex(@"^8699\d{11}$", RegexOptions.Compiled)),
         ("HiperCard", new Regex(@"^(?:606282|3841)\d{10}$", RegexOptions.Compiled)),
         ("Aura", new Regex(@"^50\d{14}$", RegexOptions.Compiled)),
     };
